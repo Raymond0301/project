@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'layout.html' %}
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Welcome to our Webpage</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='bootstrap.min.css')}}">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='3-col-portfolio.css')}}">
+
+  </head>
+
+  <body>
+{% block content %}
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading -->
+      <h1 class="my-4">News regarding expenses in Singapore
+      </h1>
+
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="https://www.straitstimes.com/sites/default/files/styles/article_pictrure_780x520_/public/articles/2018/07/27/bp_gas_270718_51.jpg?itok=TTMNROQB&timestamp=1532651520" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="https://www.straitstimes.com/singapore/household-gas-prices-up-by-378-from-aug">Household gas prices up by 3.78% from Aug</a>
+              </h4>
+              <p class="card-text">Households will pay more for gas starting next month, with gas tariffs set to increase by 3.78 per cent, or 0.7 cent per kilowatt hour (kwh), City Gas said.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="https://static.imoney.sg/articles/assets/fuel-singapore-Copy.jpg" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="https://www.imoney.sg/articles/petrol-prices-singapore/">December 2018: Petrol Prices In Singapore [Updated]
+</a>
+              </h4>
+              <p class="card-text">Any driver would, at some point, have some thought-provoking questions, such as: How are petrol prices determined? How can one save on petrol?
+
+Why do I still insist on driving? Until the day you drive a Tesla, petrol prices will be a staple in your monthly expenditure, so it’s only wise to know more about how you can go further with every drop.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="https://www.straitstimes.com/sites/default/files/styles/article_pictrure_780x520_/public/articles/2018/06/29/bp_electricity_290618_100.jpg?itok=tDPqwxv4&timestamp=1530241579" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="https://www.straitstimes.com/singapore/electricity-tariffs-to-increase-by-average-of-69-in-third-quarter-of-2018">Electricity tariffs to increase by average of 6.9% in third quarter of 2018</a>
+              </h4>
+              <p class="card-text">SINGAPORE - Electricity tariffs are set to rise by an average of 6.9 per cent in the third quarter of this year, SP Group said on Friday (June 29).</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="https://www.straitstimes.com/sites/default/files/styles/article_pictrure_780x520_/public/articles/2018/09/30/bp_print4_300918_4_0.jpg?itok=qXzdeF6B&timestamp=1538257857" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="https://www.straitstimes.com/singapore/electricity-tariffs-to-rise-by-21-for-oct-to-dec">Electricity tariffs to rise by 2.1% for Oct to Dec</a>
+              </h4>
+              <p class="card-text">For the period from Oct 1 to Dec 31, electricity tariffs will increase by an average of 2.1 per cent, or 0.48 cent per kilowatt hour compared with the previous quarter.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="https://www.straitstimes.com/sites/default/files/styles/article_pictrure_780x520_/public/articles/2018/03/06/nm-water-0603.jpg?itok=MCxkk3cF&timestamp=1520316539" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="https://www.straitstimes.com/singapore/singapore-budget-2017-water-prices-to-increase-by-30-from-july-1-in-two-phases">Singapore Budget 2017: Water prices to increase by 30% from July 1 in two phases</a>
+              </h4>
+              <p class="card-text">SINGAPORE - Water prices will increase for the first time in 17 years, Finance Minister Heng Swee Keat said on Monday (Feb 20).</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="https://www.straitstimes.com/sites/default/files/styles/article_pictrure_780x520_/public/articles/2018/11/17/nz-school-171018.jpg?itok=jYF4S8GX&timestamp=1542408193" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="https://www.straitstimes.com/singapore/education/polytechnics-ite-fees-to-go-up-for-new-students">Polytechnics, ITE fees to go up for new students</a>
+              </h4>
+              <p class="card-text">Newcomers in the 2019 academic year to pay 3% to 7% more than their seniors</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <!-- Pagination -->
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+      </div>
+      <!-- /.containers -->
+    </footer>
+  </body>
+{% endblock %}
+</html>
