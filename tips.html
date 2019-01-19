@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+{% extends 'layout.html' %}
+{% block header %}<title>Money Saving Tips</title>{% endblock %}
+<head>
+{% block content %}
+<style>
+body{
+	background-image: url({{ url_for('static', filename='save-money.jpg') }});
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: #000000;
+	position: relative;
+	line-height: 1.4;
+	font-size: 18px;
+    margin-left: 500px;
+    margin-right: 500px;
+}
+h1 {
+    text-align: center;
+}
+blockquote {
+    font-size: 30px;
+}
+.tip {
+    background-color: antiquewhite;
+}
+</style>
+</head>
+
+<body>
+
+<div class="tip">
+<h1>Tips and Tricks to Improve Your Finances</h1>
+<p><b>1. Use cash. </b>Spending cash makes the spending more real, and there's an added advantage of knowing when you're out of cash, instead of spending more than you have.</p>
+<p><b>2. Build an emergency fund. </b>It can make a lot of difference. Low-income families with an emergency fund are better off financially than moderate-income families with less saved up.</p>
+<p><b>3. Stay home </b>Going out makes you spend more than necessary. You go to the mall, eat at restaurants. It's hard to avoid spending when you're on the road. Instead, find free entertainment at home and bond with your family.</p>
+<p><b>4. Save automatically </b>Setting up automatic savings is the easiest and most effective way to save, and it puts extra cash out of sight and out of mind. Every pay day, have your employer deduct a certain amount from your paycheck and transfer it to a retirement or savings account. Or every month, have your bank or credit union transfer a fixed amount from your checking account to a savings or investment account.</p>
+<p><b>5. Don't get catalogs. </b>Or emailed promotions from companies trying to sell you stuff. Their announcements of sales or cool new products make it very tempting to buy something you don't need. Stop the catalogs and you'll spend less.</p>
+<p><b>6. Use the 24 hour rule. </b>This rules helps avoid purchasing expensive or unnecessary items on impulse. Think over each nonessential purchase for at least 24 hours. This is particularly easy to do while shopping online, because you can add items to your cart or wish list and come back to them a day later.</p>
+<p><b>7. Pay savings and debt first.</b>When you sit down to pay your, make the first bills you pay be your savings transfer and your debt payments. If not, if you pay them last … you'll often end up shortchanging them. But if you pay them first, you'll make sure you still pay your rent or mortgage, utilities, groceries and gas … so you'll just cut back on other spending.</p>
+<p><b>8. Try frugal gift-giving</b>Giving people gifts is one of the most wonderful traditions, as it shows generosity and caring. Until it becomes commercialized. Then it's just really really expensive. Instead, try giving the gift of spending time with someone. Try giving them something you baked or made yourself. Try giving them services they'd appreciate. It doesn't have to cost a lot to be generous.</p>
+<p><b>9. Treat yourself, but use it as an opportunity to save.</b>Match the cost of your nonessential indulgences in savings. So, for example, if you splurge on a smoothie while out running errands, put the same amount into your savings account. And think of it this way, if you can't afford to save the matching amount, you can't afford the treat either.</p>
+<p><b>10. Find happiness in life, not spending.</b>Many times people buy stuff because they think (subconsciously perhaps) that it will bring them happiness. They just HAVE to have the latest gadget or shoes or cars. It's so fun! And yet, you buy that stuff, and you're only happy for a day or two at most. Then you just need to buy more. It's a never-ending cycle. Instead, learn to love life. Find joy in nature! In the people around you! In doing something you love! In exercise and meditation! There's so much in life to make us happy, there's no need to find it in spending.</p>
+<blockquote>
+    <p>
+        "Too many people spend money they earned..to buy things they don't want..to impress people that they don't like."
+        <strong>--Will Rogers</strong>
+    </p>
+</blockquote>
+</div>
+</body>
+{% endblock %}
+</html>
