@@ -1,4 +1,7 @@
 import sqlite3
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 # class and stuff
 
 
@@ -35,12 +38,12 @@ conn = sqlite3.connect('user.db', check_same_thread=False)
 
 c = conn.cursor()
 
-  #  c.execute("""CREATE TABLE user (
-   #             id text,
-    #            username text,
-      #          email text,
-       #         password text
-      #          )""")
+#c.execute("""CREATE TABLE user (
+ #              id text,
+   #           username text,
+  #              email text,
+    #           password text
+    #           )""")
 
 
 def create_user(id, username, email, password):
@@ -86,4 +89,18 @@ def forget_passwords(email):
         print(row)
         if email == row[2]:
             password = row[3]
-            return password
+            fromaddr = "raymondsinglaire@gmail.com"
+            toaddr = email
+            msg = MIMEMultipart()
+            msg['From'] = fromaddr
+            msg['To'] = toaddr
+            msg['Subject'] = "Forget password"
+            body = "Your password is " + password
+            msg.attach(MIMEText(body, 'plain'))
+            server = smtplib.SMTP('smtp.gmail.com', 587)
+            server.ehlo()
+            server.starttls()
+            server.ehlo()
+            server.login("raymondsinglaire@gmail.com", "g0d1sg00d")
+            text = msg.as_string()
+            server.sendmail(fromaddr, toaddr, text)
