@@ -12,7 +12,7 @@ app.config.from_mapping(
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 
 def login_required(view):
