@@ -40,6 +40,11 @@ def tips():
     return render_template('tips.html')
 
 
+@app.route('/table')
+def table():
+    return render_template('table.html')
+
+
 @app.route('/login',  methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
