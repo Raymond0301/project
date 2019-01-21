@@ -94,14 +94,18 @@ def forget_password():
     if request.method == 'POST':
         email = request.form['email']
         word = forget_passwords(email)
-        flash(word)
+        if word is False:
+            flash("Email have been successfully sent, containing your password!")
+            return redirect(url_for('login'))
+        else:
+            flash('Invalid email')
     return render_template('forget_password.html')
 
 
 @app.route('/logout', methods=('GET', 'POST'))
 def logout():
     session.clear()
-    return redirect(url_for('home'))
+    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':

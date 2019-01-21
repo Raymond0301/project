@@ -108,3 +108,5 @@ def forget_passwords(email):
             server.login("raymondsinglaire@gmail.com", "g0d1sg00d")
             text = msg.as_string()
             server.sendmail(fromaddr, toaddr, text)
+            return False
+    return None
