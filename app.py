@@ -12,7 +12,7 @@ app.config.from_mapping(
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 def login_required(view):
@@ -110,7 +110,7 @@ def forget_password():
 @app.route('/logout', methods=('GET', 'POST'))
 def logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('home'))
 
 
 if __name__ == '__main__':
