@@ -89,13 +89,17 @@ def forget_passwords(email):
         print(row)
         if email == row[2]:
             password = row[3]
+            username = row[1]
             fromaddr = "raymondsinglaire@gmail.com"
             toaddr = email
             msg = MIMEMultipart()
             msg['From'] = fromaddr
             msg['To'] = toaddr
             msg['Subject'] = "Forget password"
-            body = "Your password is " + password
+            body = "Dear " + username + "," +\
+                "Your password is " + password + \
+                "Regards ," + \
+                "Bot"
             msg.attach(MIMEText(body, 'plain'))
             server = smtplib.SMTP('smtp.gmail.com', 587)
             server.ehlo()
