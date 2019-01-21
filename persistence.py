@@ -96,10 +96,7 @@ def forget_passwords(email):
             msg['From'] = fromaddr
             msg['To'] = toaddr
             msg['Subject'] = "Forget password"
-            body = "Dear " + username + "," +\
-                "Your password is " + password + \
-                "Regards ," + \
-                "Bot"
+            body = "Dear " + username + "," + "\n" + "          Your password is " + password + "." + "\n" + "\n" + "Regards ," + "\n" + "Bot"
             msg.attach(MIMEText(body, 'plain'))
             server = smtplib.SMTP('smtp.gmail.com', 587)
             server.ehlo()
