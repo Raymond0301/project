@@ -117,6 +117,29 @@ def forget_password():
     return render_template('forget_password.html')
 
 
+@app.route('/reset', methods=('GET', 'POST'))
+def reset():
+    if request.method == 'POST':
+        email = request.form['email']
+        old_password = request.form['old_password']
+        new_password = request.form['new_password']
+        confirm_password = request.form['confirm_password']
+        checking = check_users(email, old_password)
+        if checking is False:
+            if new_password == confirm_password:
+                new = change(email, new_password)
+                if new is False:
+                    flash("Password have been changed")
+                    return redirect(url_for('login'))
+                else:
+                    flash('Failed to reset password!')
+            else:
+                flash('Passwords are not the same')
+        else:
+            flash('Invalid email/ old password')
+    return render_template('reset.html')
+
+
 @app.route('/logout', methods=('GET', 'POST'))
 def logout():
     session.clear()

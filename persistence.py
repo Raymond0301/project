@@ -106,6 +106,14 @@ def check_user(username, email):
             return False
 
 
+def check_users(email, password):
+    k = c.execute("SELECT * FROM user")
+    conn.commit()
+    for row in k:
+        print(row)
+        if row[3] == password and row[2] == email:
+            return False
+
 # after forget password send email and user got password, add a back button for user to go back
 
 
@@ -139,6 +147,14 @@ def forget_passwords(email):
             server.sendmail(fromaddr, toaddr, text)
             return False
     return None
+
+
+def change(email, new_password):
+    c.execute("SELECT * FROM user")
+    [print(row) for row in c.fetchall()]
+    c.execute("UPDATE user SET password = (?) WHERE email = (?)", (new_password, email))
+    conn.commit()
+    return False
 
 
 con = sqlite3.connect('savings.db', check_same_thread=False)
