@@ -33,12 +33,16 @@ class User:
     def set_password(self, password):
         self.__password = password
 
-class Savings(User):
-    def __init__(self,username,month,target,actual):
-        super.__init__(username)
+
+class Savings:
+    def __init__(self, username, month, target, actual):
+        self.__username = username
         self.__month = month
         self.__target = target
         self.__actual = actual
+
+    def get_username(self):
+        return self.__username
 
     def get_month(self):
         return self.__month
@@ -49,14 +53,18 @@ class Savings(User):
     def get_actual(self):
         return self.__actual
 
-    def set_month(self,month):
+    def set_username(self, username):
+        self.__username = username
+
+    def set_month(self, month):
         self.__month = month
 
-    def set_target(self,target):
+    def set_target(self, target):
         self.__target = target
 
-    def set_actual(self,actual):
+    def set_actual(self, actual):
         self.__actual = actual
+
 
 conn = sqlite3.connect('user.db', check_same_thread=False)
 
@@ -148,4 +156,5 @@ def saving_table(username, month, target, actual):
     saving = Savings(username, month, target, actual)
     t.execute('INSERT INTO savings VALUES (?,?,?,?)', (saving.get_username(), saving.get_month(), saving.get_target(), saving.get_actual()))
     con.commit()
+    return False
 

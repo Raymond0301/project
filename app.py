@@ -44,10 +44,11 @@ def tips():
 def table():
     if request.method == 'POST':
         error = None
-        username = session['username']
+        username = session['user_name']
         month = request.form['month']
-        target = request.form['password']
-        actual = request.form['password']
+        target = request.form['target']
+        actual = request.form['actual']
+        print(target)
         save = saving_table(username, month, target, actual)
         if save is False:
             flash('Your table has been saved!')
