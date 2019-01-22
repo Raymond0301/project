@@ -144,8 +144,8 @@ t = con.cursor()
                       #)''')
 
 
-def saving_table(username,month,target,actual):
-    saving = Savings(username,month,target,actual)
-    t.execute('INSERT INTO savings VALUES (?,?,?,?)',(saving.get_username(),saving.get_month(),saving.get_target(),saving.get_actual()))
+def saving_table(username, month, target, actual):
+    saving = Savings(username, month, target, actual)
+    t.execute('INSERT INTO savings VALUES (?,?,?,?)', (saving.get_username(), saving.get_month(), saving.get_target(), saving.get_actual()))
     con.commit()
 
