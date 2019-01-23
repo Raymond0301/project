@@ -42,16 +42,16 @@ def tips():
 
 @app.route('/table', methods=('GET', 'POST'))
 def table():
-    if request.method == 'POST':
-        error = None
-        username = session['user_name']
-        month = request.form['month']
-        target = request.form['target']
-        actual = request.form['actual']
-        print(target)
-        save = saving_table(username, month, target, actual)
-        if save is False:
-            flash('Your table has been saved!')
+  #  if request.method == 'POST':
+   #     error = None
+     #   username = session['user_name']
+     #   month = request.form['month']
+      #  target = request.form['target']
+      #  actual = request.form['actual']
+      #  print(target)
+      #  save = saving_table(username, month, target, actual)
+      #  if save is False:
+       #     flash('Your table has been saved!')
     return render_template('table.html')
 
 
