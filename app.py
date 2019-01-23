@@ -55,6 +55,11 @@ def table():
     return render_template('table.html')
 
 
+@app.route('/quiz')
+def quiz():
+    return render_template('quiz.html')
+
+
 @app.route('/login',  methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
