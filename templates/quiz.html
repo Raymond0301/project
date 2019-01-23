@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 {% extends 'layout.html' %}
+{% block content %}
 <head>
     <meta charset="utf-8">
-    <title>Quiz</title>
     <!-- jquery for maximum compatibility -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
@@ -20,7 +20,6 @@
      * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
      */
 
-    var quiztitle = "Quiz Title";
 
     /**
     * Set the information about your questions here. The correct answer string needs to match
@@ -40,52 +39,44 @@
             "explanation"   :   "You have to track how muchh to spend in order to plan how much cash you can set aside as savings.",
         },
         {
-            "question"      :   "Q2: Who is on the two dollar bill?",
+            "question"      :   "Q2: A simple change such as bringing a bagged lunch to work a few times a week can add up to big savings.Do you agree?",
             "image"         :   "",
             "choices"       :   [
-                                    "Thomas Jefferson",
-                                    "Dwight D. Eisenhower",
-                                    "Benjamin Franklin",
-                                    "Abraham Lincoln"
+                                    "True",
+                                    "False"
                                 ],
-            "correct"       :   "Thomas Jefferson",
-            "explanation"   :   "The two dollar bill is seldom seen in circulation. As a result, some businesses are confused when presented with the note.",
+            "correct"       :   "True",
+            "explanation"   :   "Brown bagging your lunch just a few times a week can make a significant difference in your savings over a year. ",
         },
         {
-            "question"      :   "Q3: What event began on April 12, 1861?",
+            "question"      :   "Q3: Having properly inflated tires can improve your fuel efficiency and save you money.Do you agree?",
             "image"         :   "",
             "choices"       :   [
-                                    "First manned flight",
-                                    "California became a state",
-                                    "American Civil War began",
-                                    "Declaration of Independence"
+                                    "True",
+                                    "False"
                                 ],
-            "correct"       :   "American Civil War began",
-            "explanation"   :   "South Carolina came under attack when Confederate soldiers attacked Fort Sumter. The war lasted until April 9th 1865.",
+            "correct"       :   "True",
+            "explanation"   :   "Having tires that are under-inflated by about 10 pounds per square inch decreases fuel efficiency by about 1.5 mpg. By having properly inflated tires, you can improve your fuel economy and get more mileage out of your car.",
         },
         {
-            "question"      :   "Q4: What event began on April 12, 1861?",
+            "question"      :   "Q4: With the cost of movie tickets these days, going to the movies is always expensive.Do you agree?",
             "image"         :   "",
             "choices"       :   [
-                                    "First manned flight",
-                                    "California became a state",
-                                    "American Civil War began",
-                                    "Declaration of Independence"
+                                    "True",
+                                    "False"
                                 ],
-            "correct"       :   "American Civil War began",
-            "explanation"   :   "South Carolina came under attack when Confederate soldiers attacked Fort Sumter. The war lasted until April 9th 1865.",
+            "correct"       :   "False",
+            "explanation"   :   "Although movie tickets typically cost $12 or more, you may be able to view the latest films in a local theater via special free screenings.",
         },
         {
-            "question"      :   "Q5: What event began on April 12, 1861?",
+            "question"      :   "Q5: Good cooking means spending a lot of money at the grocery store.Do you agree?",
             "image"         :   "",
             "choices"       :   [
-                                    "First manned flight",
-                                    "California became a state",
-                                    "American Civil War began",
-                                    "Declaration of Independence"
+                                    "True",
+                                    "False"
                                 ],
-            "correct"       :   "American Civil War began",
-            "explanation"   :   "South Carolina came under attack when Confederate soldiers attacked Fort Sumter. The war lasted until April 9th 1865.",
+            "correct"       :   "False",
+            "explanation"   :   "For just around $3 a serving, you can make several flavorful dishes for you and your family.",
         },
 
     ];
@@ -261,5 +252,6 @@
 </head>
 <body>
     <div id="frame" role="content"></div>
+{% endblock %}
 </body>
 </html>
