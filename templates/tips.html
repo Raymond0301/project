@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+{% extends 'layout.html' %}
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tips and Tricks</title>
+    {% block content %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Tips.css') }}">
 </head>
 <body>
@@ -99,7 +102,9 @@
   <span class="dot" onclick="currentSlide(9)"></span>
   <span class="dot" onclick="currentSlide(10)"></span>
 </div>
+
 <script src="{{ url_for('static',filename='Tips.js')}}">
 </script>
 </body>
+{% endblock %}
 </html>
