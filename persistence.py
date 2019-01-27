@@ -160,17 +160,17 @@ def change(email, new_password):
 con = sqlite3.connect('savings.db', check_same_thread=False)
 
 t = con.cursor()
-#t.execute('''CREATE TABLE savings(
-          #username text NOT NULL,
-          #month text NOT NULL,
-          #traget_saving INTEGER,
-          #actual_amount_saved INTEGER
-                      #)''')
+#t.execute('''CREATE TABLE saving(
+#          id text NOT NULL,
+#          month text NOT NULL,
+#          traget_saving INTEGER,
+ #         actual_amount_saved INTEGER
+ #                     )''')
 
 
 def saving_table(username, month, target, actual):
     saving = Savings(username, month, target, actual)
-    t.execute('INSERT INTO savings VALUES (?,?,?,?)', (saving.get_username(), saving.get_month(), saving.get_target(), saving.get_actual()))
+    t.execute('INSERT INTO savings VALUES (?,?,?,?)', (saving.get_username, saving.get_month(), saving.get_target(), saving.get_actual()))
     con.commit()
     return False
 
