@@ -51,8 +51,8 @@
                     <div class="col-md-8">
                         <div class="card">
                             <form action="{{ url_for('table') }}" method="POST">
-                            <!-- <div class="card-header">Monthly Savings Table</div> -->
-                            <div><input class="card-header" name="username" placeholder="put your username"> </div>
+                            <div class="card-header" name="username">{{session['user_name'] + "'" + "s" + " " + "table"}}</div>
+                            <!-- <div><input class="card-header" name="username" placeholder="put your username"> </div>-->
 
                             <div class="card-body">
 
