@@ -38,23 +38,34 @@ def tips():
     return render_template('tips.html')
 
 
-@app.route('/table', methods=('GET', 'POST'))
+@app.route('/table')
 def table():
+    if session['user_name'] is not None:
+        username = session['user_name']
+        posts = get_data(username)
+        return render_template('table.html', posts=posts)
+    else:
+        return render_template('table.html')
+
+
+@app.route('/quiz')
+def quiz():
+    return render_template('quiz.html')
+
+
+@app.route('/b4table', methods=('GET', 'POST'))
+def b4table():
     if request.method == 'POST':
         error = None
-        username = request.form['username']
+        username = session['user_name']
         month = request.form['month']
         target = request.form['target']
         actual = request.form['actual']
         save = saving_table(username, month, target, actual)
         if save is False:
             flash('Your table has been saved!')
-    return render_template('table.html')
-
-
-@app.route('/quiz')
-def quiz():
-    return render_template('quiz.html')
+            return redirect(url_for('table'))
+    return render_template('b4table.html')
 
 
 @app.route('/login',  methods=('GET', 'POST'))

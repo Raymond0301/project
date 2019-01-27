@@ -1,137 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-{% extends 'layout.html' %}
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-</head>
-<body>
-<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-<!-- Styles -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/darkly/bootstrap.min.css">
-{% block content %}
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
-    <script src="{{url_for('static', filename='bootstable.js')}}"></script>
-    <div id="jquery-script-menu">
-        <div class="jquery-script-center">
-            <div class="jquery-script-ads">
-                <script type="text/javascript"><!--
-                google_ad_client = "ca-pub-2783044520727903";
-                /* jQuery_demo */
-                google_ad_slot = "2780937993";
-                google_ad_width = 728;
-                google_ad_height = 90;
-                //-->
-                </script>
-                <script type="text/javascript"
-                        src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
-                </script>
-            </div>
-            <div class="jquery-script-clear"></div>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info">
+                {{ session['user_name'] + "'s Savings plan"}}</div>
+        {% for g in range(0,10) %}
+            <div class="alert alert-success" style="display:none;">
+                <span class="glyphicon glyphicon-ok"></span> Drag table row and cange Order</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Month
+                        </th>
+                        <th>
+                            Target Amount
+                        </th>
+                        <th>
+                            Actual amount saved
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="active">
+                        <td>
+                            {{posts['month']}}
+                        </td>
+                        <td>
+                            {{ "$" + posts['target_saving']}}
+                        </td>
+                        <td>
+                            {{ "$" + posts['actual_amount_saved']}}
+                        </td>
+                        <td><button><a  href="{{ url_for('table', month=posts['month'], target=posts['target_saving'], actual=posts['actual_amount_saved']) }}">Generate results</a></button></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+        {% endfor %}
     </div>
-
-    <div id="app" style="margin:150px auto">
-
-        <main class="py-4">
-            <div class="container">
-
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card">
-                            <form action="{{ url_for('table') }}" method="POST">
-                            <div class="card-header" name="username">{{session['user_name'] + "'" + "s" + " " + "table"}}</div>
-                            <!-- <div><input class="card-header" name="username" placeholder="put your username"> </div>-->
-
-                            <div class="card-body">
-
-                                <table class="table table-responsive-md table-sm table-bordered" id="makeEditable">
-                                    <thead>
-                                    <tr>
-                                        <th name="month" id="month">Month</th>
-                                        <th name="target" id="target">Target Saving</th>
-                                        <th name="actual" id="actual">Actual Amount Saved</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>January</td>
-                                        <td>7000</td>
-                                        <td>6000</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <span style="float:left"><button
-                                                                  class="btn btn-danger" value="submit" type="submit">Save</button></span>
-                            </div>
-                                </form>
-
-                            <div>
-                                <span style="float:right"><button id="but_add"
-                                                                  class="btn btn-danger">Add New Row</button></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    </body>
-
-    <script>
-        $(function () {
-
-            $('#makeEditable').SetEditable({$addButton: $('#but_add')});
-
-            $('#submit_data').on('click', function () {
-                var td = TableToCSV('makeEditable', ',');
-                console.log(td);
-                var ar_lines = td.split("\n");
-                var each_data_value = [];
-                for (i = 0; i < ar_lines.length; i++) {
-                    each_data_value[i] = ar_lines[i].split(",");
-                }
-
-                for (i = 0; i < each_data_value.length; i++) {
-                    if (each_data_value[i] > 1) {
-                        console.log(each_data_value[i][2]);
-                        console.log(each_data_value[i].length);
-                    }
-
-                }
-
-            });
-        });
-
-    </script>
-    <script type="text/javascript">
-
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-36251023-1']);
-        _gaq.push(['_setDomainName', 'jqueryscript.net']);
-        _gaq.push(['_trackPageview']);
-
-        (function () {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-
-    </script>
-{% endblock %}
-</html>
+</div>

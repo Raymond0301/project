@@ -170,7 +170,17 @@ t = con.cursor()
 
 def saving_table(username, month, target, actual):
     saving = Savings(username, month, target, actual)
-    t.execute('INSERT INTO savings VALUES (?,?,?,?)', (saving.get_username, saving.get_month(), saving.get_target(), saving.get_actual()))
+    t.execute('INSERT INTO savings VALUES (?,?,?,?)', (saving.get_username(), saving.get_month(), saving.get_target(), saving.get_actual()))
     con.commit()
     return False
 
+
+def get_data(username):
+    v = t.execute('SELECT * FROM savings')
+    lists = []
+    for row in v:
+        if row[0] == username:
+            lists.append(row[1])
+            lists.append(row[2])
+            lists.append(row[3])
+            return lists
