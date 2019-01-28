@@ -56,6 +56,9 @@ class Savings:
     def get_actual(self):
         return self.__actual
 
+    def get_id(self):
+        return self.__username + self.__month
+
     def set_username(self, username):
         self.__username = username
 
@@ -81,13 +84,6 @@ class Blog:
 conn = sqlite3.connect('user.db', check_same_thread=False)
 
 c = conn.cursor()
-
-#c.execute("""CREATE TABLE user (
- #              id text,
-   #           username text,
-  #              email text,
-    #           password text
-    #           )""")
 
 
 def create_user(id, username, email, password):
@@ -172,22 +168,26 @@ def change(email, new_password):
 con = sqlite3.connect('savings.db', check_same_thread=False)
 
 t = con.cursor()
+#t.execute("""CREATE TABLE save (
+ #             id text NOT NULL,
+  #            month text NOT NULL,
+   ##          actual text NOT NULL
+     #         )""")
 
 
 def saving_table(username, month, target, actual):
     saving = Savings(username, month, target, actual)
-    t.execute('INSERT INTO savings VALUES (?,?,?,?)', (saving.get_username(), saving.get_month(), saving.get_target(), saving.get_actual()))
+    t.execute('INSERT INTO save VALUES (?,?,?,?)', (saving.get_id(), saving.get_month(), saving.get_target(), saving.get_actual()))
     con.commit()
     return False
 
 
 def get_data(username):
-    v = t.execute('SELECT * FROM savings')
+    v = t.execute('SELECT * FROM save')
     lists = []
-
     for row in v:
-        if row[0] == username:
-            saving = Savings(row[0], row[1], row[2], row[3])
+        if row[0] == username + row[1]:
+            saving = Savings(username, row[1], row[2], row[3])
             lists.append(saving)
 #            lists.append(row[1])
 #            lists.append(row[2])

@@ -7,10 +7,22 @@
     <div class="row">
         <div class="col-md-12">
             <div class="alert alert-info">
-                {{ session['user_name'] + "'s Savings plan"}}</div>
+                {{ session['user_name'] + "'s Savings plan"}}
+                <a class="action" id="jobby" href="{{ url_for('b4table') }}"> Add data</a>
+                <a class="action" id="jobby" href="{{ url_for('home') }}">Home  | </a> <div></div>
+            </div>
+        <style>
+            #jobby {
+                float: right;
+            }
+            #bob {
+                color: red;
+            }
+        </style>
+
             <div class="alert alert-success" style="display:none;">
                 <span class="glyphicon glyphicon-ok"></span> Drag table row and change Order</div>
-        {% for post in posts %}
+            {% for post in posts %}
             <table class="table">
                 <thead>
                     <tr>
@@ -36,11 +48,12 @@
                         <td>
                             {{post.get_actual()}}
                         </td>
+
                     </tr>
                 </tbody>
             </table>
         </div>
-        {% endfor %}
 
     </div>
 </div>
+        {% endfor %}

@@ -5,9 +5,9 @@
   <h1>MoneyGreen Community</h1>
   <ul>
     {% if session['user_name'] %}
-      <li><span>{{ session['user_name'] }}</span>
-      <li><a href="{{ url_for('create') }}">Create posts</a>
-      <li><a href="{{ url_for('home') }}">Home</a>
+      <li><span id="top">{{ session['user_name'] }}</span>
+      <li><a id="top" href="{{ url_for('create') }}">Create posts</a>
+      <li><a id='top' href="{{ url_for('home') }}">Home</a>
     {% else %}
       <li><a href="{{ url_for('signup') }}">Register</a>
       <li><a href="{{ url_for('login') }}">Log In</a>
@@ -23,3 +23,8 @@
   {% endfor %}
   {% block content %}{% endblock %}
 </section>
+<style>
+    #top{
+        color:white;
+    }
+</style>
