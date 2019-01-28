@@ -10,7 +10,7 @@
                 {{ session['user_name'] + "'s Savings plan"}}</div>
         {% for g in range(0,10) %}
             <div class="alert alert-success" style="display:none;">
-                <span class="glyphicon glyphicon-ok"></span> Drag table row and cange Order</div>
+                <span class="glyphicon glyphicon-ok"></span> Drag table row and change Order</div>
             <table class="table">
                 <thead>
                     <tr>
@@ -28,15 +28,15 @@
                 <tbody>
                     <tr class="active">
                         <td>
-                            {{posts['month']}}
+                            {{posts['username'['month']]}}
                         </td>
                         <td>
-                            {{ "$" + posts['target_saving']}}
+                            {{ "$" + posts['username'['target']]}}
                         </td>
                         <td>
-                            {{ "$" + posts['actual_amount_saved']}}
+                            {{ "$" + posts['username'['actual']]}}
                         </td>
-                        <td><button><a  href="{{ url_for('table', month=posts['month'], target=posts['target_saving'], actual=posts['actual_amount_saved']) }}">Generate results</a></button></td>
+                        <td><button><a  href="{{ url_for('table', month=posts['username'['month']], target=posts['username'['target']], actual_amount_saved=posts['username'['actual']])}}">Generate results</a></button></td>
                     </tr>
                 </tbody>
             </table>

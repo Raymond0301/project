@@ -177,10 +177,14 @@ def saving_table(username, month, target, actual):
 
 def get_data(username):
     v = t.execute('SELECT * FROM savings')
-    lists = []
+#    lists = []
+    dic = {}
     for row in v:
         if row[0] == username:
-            lists.append(row[1])
-            lists.append(row[2])
-            lists.append(row[3])
-            return lists
+#            lists.append(row[1])
+#            lists.append(row[2])
+ #           lists.append(row[3])
+ #           dic = {username: lists}
+            dic = {username: {'month': row[1], 'target': row[2], 'actual': row[3]}}
+            print(dic)
+    return dic
