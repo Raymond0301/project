@@ -111,6 +111,10 @@ def signup():
         elif not email:
             error = 'Email required'
         else:
+            # remove_cell()
+            # clear_user()
+            # clear_blog()
+            # clear_savings()
             validation = check_user(username, email)
             if validation is False:
                 error = 'Username/Email has already been taken'
@@ -221,6 +225,23 @@ def index():
         return render_template('index.html', posts=posts)
     else:
         return render_template('login.html')
+
+
+@app.route('/project', methods=('GET', 'POST'))
+def expense():
+    if request.method == 'POST':
+        name = request.form['name']
+        date = request.form['amount']
+        amount = request.form['date']
+        category = request.form['category']
+
+        cc = create_cell(name, amount, date, category)
+        if cc is True:
+            flash('Submission was Successful')
+
+    expenses = retrieve_cell()
+    print(expenses)
+    return render_template('Project.html', rows=expenses)
 
 
 if __name__ == '__main__':

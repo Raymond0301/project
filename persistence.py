@@ -71,6 +71,9 @@ class Savings:
     def set_actual(self, actual):
         self.__actual = actual
 
+    def difference(self):
+        return self.__actual <= self.__target
+
 
 class Blog:
     def __init__(self, id):
@@ -79,6 +82,38 @@ class Blog:
         self.title = ''
         self.body = ''
         self.created = ''
+
+
+class Expenses:
+    def __init__(self, name, amount, date, category):
+        self.__name = name
+        self.__amount = amount
+        self.__date = date
+        self.__category = category
+
+    def get_name(self):
+        return self.__name
+
+    def get_amount(self):
+        return self.__amount
+
+    def get_date(self):
+        return self.__date
+
+    def get_category(self):
+        return self.__category
+
+    def set_name(self, name):
+        self.__name = name
+
+    def set_amount(self, amount):
+        self.__amount = amount
+
+    def set_date(self, date):
+        self.__date = date
+
+    def set_category(self, category):
+        self.__category = category
 
 
 conn = sqlite3.connect('user.db', check_same_thread=False)
@@ -197,7 +232,7 @@ def get_data(username):
 
 
 def clear_savings():
-    t.execute("DELETE FROM savings")
+    t.execute("DELETE FROM save")
     con.commit()
 
 
@@ -247,3 +282,30 @@ def init_db():
     clear_blog()
     for i in range(5):
         create_blog('user'+str(i), 'title'+str(i), 'body'+str(i))
+
+
+cnct = sqlite3.connect('finance.db', check_same_thread=False)
+print('db.opened')
+cur = cnct.cursor()
+# cur.execute('''CREATE TABLE spent(name TEXT, amount INTEGER, date TEXT, category TEXT)''')
+print('Table Initialized')
+
+
+def create_cell(name, amount, date, category):
+    cell = Expenses(name, amount, date, category)
+    cur.execute("INSERT INTO spent VALUES (?,?,?,?)",
+                (cell.get_name(), cell.get_amount(), cell.get_date(), cell.get_category()))
+    cnct.commit()
+    return True
+
+
+def retrieve_cell():
+    x = cur.execute("SELECT * FROM spent")
+    if x:
+        expenses = cur.fetchall()
+        return expenses
+
+
+def remove_cell():
+    cur.execute("DELETE FROM spent")
+    cnct.commit()

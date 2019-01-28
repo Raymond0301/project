@@ -86,14 +86,14 @@
             <img class="rounded-circle" src="{{ url_for('static', filename='news2.jpg') }}" alt="Generic placeholder image" width="140" height="140">
             <h2>News</h2>
             <p>To keep you updated with news about the upcoming price increase!</p>
-            <p><a class="btn btn-secondary" href="{{ url_for('profile') }}" role="button">View page &raquo;</a></p>
+            <p><a class="btn btn-secondary" id="lul" href="{{ url_for('profile') }}" role="button">View page &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4" id="job">
             <img class="rounded-circle" src="{{ url_for('static', filename='logo-4.png') }}" alt="Generic placeholder image" width="140" height="140">
             <h2>Savings</h2>
               <p>Set a monthly savings goal for yourself to control your spendings.<br>Note: Feature only unlocks once logged in!</p>
               {% if session['user_name'] %}
-                    <p><a class="btn btn-secondary" href="{{ url_for('table')}}" role="button">View page &raquo;</a></p>
+                    <p><a class="btn btn-secondary" id="lul" href="{{ url_for('table')}}" role="button">View page &raquo;</a></p>
                 {% else %}
                     <p><a class="btn btn-secondary" href="#" onclick="myDialog()" role="button">View page &raquo;</a></p>
                 {% endif %}
@@ -103,9 +103,14 @@
             <img class="rounded-circle" src="{{ url_for('static', filename='images.png') }}" alt="Generic placeholder image" width="140" height="140">
             <h2>Table of Expenditure</h2>
             <p>Sort out your expenses to find out how much money you need to spend and left for daily usage or savings</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View Page &raquo;</a></p>
+            <p><a class="btn btn-secondary" id="lul" href="{{ url_for('expense') }}" role="button">View Page &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
+      <style>
+          #lul {
+              background-color: blue;
+          }
+      </style>
 
 
         <!-- START THE FEATURETTES -->

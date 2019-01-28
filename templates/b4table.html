@@ -3,17 +3,11 @@
 <head>
 </head>
 <body>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul class=flashes>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
+    <h2>Savings Plan</h2>
+
+
     <div>
-        <form action="{{ url_for('b4table')}}" method="POST">
+        <form action="{{ url_for('b4table')}}" method="POST" id="lol">
             The month you saved your money:
                 <input type="text" id='form' name="month">
             What is your target savings:
@@ -28,12 +22,14 @@
     </div>
 <style>
     input[type=text], select {
-        width: 100%;
+        width: 250%;
         padding: 12px 20px;
         margin:8px 0;
         display: inline-block;
         border: 1px solid #cccccc;
         box-sizing: border-box;
+        align-items: center;
+
     }
 
     input[type=submit] {
@@ -80,5 +76,6 @@
     }
 
 </style>
+
 </body>
 </html>
