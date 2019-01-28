@@ -61,6 +61,7 @@ def b4table():
         month = request.form['month']
         target = request.form['target']
         actual = request.form['actual']
+        clear_savings()
         save = saving_table(username, month, target, actual)
         if save is False:
             flash('Your table has been saved!')

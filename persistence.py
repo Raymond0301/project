@@ -172,12 +172,6 @@ def change(email, new_password):
 con = sqlite3.connect('savings.db', check_same_thread=False)
 
 t = con.cursor()
-#t.execute('''CREATE TABLE saving(
-#          id text NOT NULL,
-#          month text NOT NULL,
-#          traget_saving INTEGER,
- #         actual_amount_saved INTEGER
- #                     )''')
 
 
 def saving_table(username, month, target, actual):
@@ -189,17 +183,22 @@ def saving_table(username, month, target, actual):
 
 def get_data(username):
     v = t.execute('SELECT * FROM savings')
-#    lists = []
-    dic = {}
+    lists = []
+
     for row in v:
         if row[0] == username:
+            saving = Savings(row[0], row[1], row[2], row[3])
+            lists.append(saving)
 #            lists.append(row[1])
 #            lists.append(row[2])
  #           lists.append(row[3])
  #           dic = {username: lists}
-            dic = {username: {'month': row[1], 'target': row[2], 'actual': row[3]}}
-            print(dic)
-    return dic
+    return lists
+
+
+def clear_savings():
+    t.execute("DELETE FROM savings")
+    con.commit()
 
 
 blogs = shelve.open('blog')

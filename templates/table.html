@@ -8,9 +8,9 @@
         <div class="col-md-12">
             <div class="alert alert-info">
                 {{ session['user_name'] + "'s Savings plan"}}</div>
-        {% for post in posts %}
             <div class="alert alert-success" style="display:none;">
                 <span class="glyphicon glyphicon-ok"></span> Drag table row and change Order</div>
+        {% for post in posts %}
             <table class="table">
                 <thead>
                     <tr>
@@ -28,19 +28,19 @@
                 <tbody>
                     <tr class="active">
                         <td>
-                            {{post['month']}}
+                            {{post.get_month()}}
                         </td>
                         <td>
-                            {{ "$" + post['target']}}
+                            {{post.get_target()}}
                         </td>
                         <td>
-                            {{ "$" + post['actual']}}
+                            {{post.get_actual()}}
                         </td>
-                        <td><button><a  href="{{ url_for('table', month=posts['username'['month']], target=posts['username'['target']], actual_amount_saved=posts['username'['actual']])}}">Generate results</a></button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
         {% endfor %}
+
     </div>
 </div>
