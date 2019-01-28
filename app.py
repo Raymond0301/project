@@ -158,6 +158,7 @@ def logout():
     session.clear()
     return redirect(url_for('home'))
 
+
 @app.route('/<string:id>/update', methods=('GET', 'POST'))
 def update(id):
     post = get_blog(id)
@@ -180,11 +181,13 @@ def update(id):
 
     return render_template('update.html', post=post)
 
+
 @app.route('/<string:id>/delete', methods=('GET', 'POST'))
 def delete(id):
     delete_blog(id)
     posts = get_blogs()
     return render_template('index.html', posts=posts)
+
 
 @app.route('/create', methods=('GET', 'POST'))
 def create():
@@ -204,12 +207,15 @@ def create():
 
     return render_template('create.html')
 
-@app.route('/')
+
+@app.route('/index')
 def index():
-    if 'id' in session:
+    if 'user_name' in session:
         posts = get_blogs()
-        return render_template('index.html', posts = posts)
+        return render_template('index.html', posts=posts)
     else:
         return render_template('login.html')
+
+
 if __name__ == '__main__':
     app.run(port=5000)
