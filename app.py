@@ -53,6 +53,11 @@ def quiz():
     return render_template('quiz.html')
 
 
+@app.route('/news2')
+def news2():
+    return render_template('news2.html')
+
+
 @app.route('/b4table', methods=('GET', 'POST'))
 def b4table():
     if request.method == 'POST':
