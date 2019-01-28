@@ -4,9 +4,10 @@
 <nav>
   <h1>MoneyGreen Community</h1>
   <ul>
-    {% if session['id'] %}
+    {% if session['user_name'] %}
       <li><span>{{ session['user_name'] }}</span>
-      <li><a href="{{ url_for('logout') }}">Log Out</a>
+      <li><a href="{{ url_for('create') }}">Create posts</a>
+      <li><a href="{{ url_for('home') }}">Home</a>
     {% else %}
       <li><a href="{{ url_for('signup') }}">Register</a>
       <li><a href="{{ url_for('login') }}">Log In</a>
