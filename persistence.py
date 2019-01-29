@@ -189,6 +189,8 @@ def forget_passwords(email):
             text = msg.as_string()
             server.sendmail(fromaddr, toaddr, text)
             return False
+        else:
+            return None
     return None
 
 
